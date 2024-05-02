@@ -23,6 +23,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
+                                          .requestMatchers("/").anyRequest().permitAll()
                         .requestMatchers("/api/**").hasRole("LOGIN-APP-USER")
                         .anyRequest().denyAll())
                 .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(
