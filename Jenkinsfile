@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                echo $PATH
                 sh 'mvn --version'
             }
         }
